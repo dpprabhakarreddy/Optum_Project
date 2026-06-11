@@ -68,3 +68,10 @@ def check_string_as_nan(df):
 
 # COMMAND ----------
 
+def read_xml(path, file_name, row_tag):
+    df = (
+    spark.read
+    .format("xml")
+    .option("rowTag", "row")
+    .load(medallionBronzePath + file_name+".xml"))
+    return df;
